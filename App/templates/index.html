@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+    Main writer: Keez Cuijpers
+    Reviewer: Noah Nuelandt
+    Contributors: Claire Bams
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group 12 - Trajectory Estimation</title>
+    <link rel="stylesheet" href="../static/style.css">
+
+</head>
+<body>
+
+<div class="app">
+    <section class="topbar">
+
+        <div class="group">
+            <div class="group-label">Choose video</div>
+            <select id="video-select" class="toolbar-select">
+                <option value="MOT20-01">MOT20-01</option>
+                <option value="MOT20-02">MOT20-02</option>
+                <option value="MOT20-03">MOT20-03</option>
+                <option value="MOT20-05">MOT20-05</option>
+            </select>
+        </div>
+
+        <!--
+        Main writer: Claire Bams
+        Reviewer: Noah Nuelandt
+        Contributors: Keez Cuijpers
+        -->
+        <div class="group model-toolbar">
+            <div class="group-label">Model</div>
+
+            <select id="model-select" class="toolbar-select">
+                <option value="kalman">Kalman Filter</option>
+                <option value="transformer">Transformer</option>
+                <option value="social_lstm">Social LSTM</option>
+                <option value="real-trained">Real-trained</option>
+                <option value="synthetic-trained">Synthetic-trained</option>
+                <option value="mixed">Mixed model</option>
+            </select>
+        </div>
+
+    </section>
+
+
+
+
+    <main class="layout dashboard-grid">
+
+        <!-- TOP LEFT: VIDEO -->
+        <section class="panel grid-card">
+            <div class="panel-title">Video</div>
+
+            <div class="panel-subtitle" id="video-subtitle" style="display: none;">
+                Selected target: <strong id="video-selected-target">No selection</strong>
+            </div>
+
+            <div class="video-frame">
+
+                <div class="video-overlay-label" id="video-label">
+                    Fixed camera feed • Video A
+                </div>
+
+                <!-- REAL VIDEO GOES HERE -->
+                <!-- Frame-by-frame image playback from baseline image_path -->
+                <img id="video-feed" alt="Active sequence frame"
+                     style="width: 100%; height: 100%; object-fit: cover;" />
+
+                <div class="video-error-banner hidden" id="video-error-banner" role="alert"></div>
+
+                <div class="frame-controls" id="frame-controls">
+                    <button class="play-btn" id="frame-play-toggle" type="button">Play</button>
+                    <span class="timestamp" id="frame-indicator">Frame: -</span>
+                </div>
+
+                <!-- Drawing layer (paths, predictions, etc.) -->
+                <svg class="paths" viewBox="0 0 1000 562"
+                     preserveAspectRatio="none"></svg>
+            </div>
+        </section>
+
+
+        <section class="panel grid-card">
+            <div class="panel-title">Stat</div>
+            <div class="panel-subtitle">Sequence and accuracy metrics</div>
+
+            <!-- GENERAL MODE -->
+            <div id="general-panel">
+                <div class="stat-card">
+                    <div class="stat-label">GENERAL</div>
+
+                    <div class="model-compare">
+                        <div><strong>People:</strong> <span id="general-fps">—</span></div>
+                        <div><strong>ADE:</strong> <span id="general-ade">—</span></div>
+                        <div><strong>FDE:</strong> <span id="general-fde">—</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PERSON MODE -->
+            <div id="person-panel" class="hidden">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">SYSTEM</div>
+
+                        <div class="model-compare">
+                            <div><strong>People:</strong> <span id="person-fps">—</span></div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-label">SELECTED TARGET</div>
+
+                        <div class="model-compare">
+                            <div><strong>Target:</strong> <span id="selected-target">No selection</span></div>
+                            <div><strong>ADE:</strong> <span id="person-ade">—</span></div>
+                            <div><strong>FDE:</strong> <span id="person-fde">—</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-card" id="person-details-card">
+                    <h3>Selected person details</h3>
+                    <div class="detail-grid">
+                        <div class="detail-pill"><strong>ID:</strong> <span id="person-id">—</span></div>
+                        <div class="detail-pill"><strong>Status:</strong> <span id="person-status">—</span></div>
+                        <div class="detail-pill"><strong>History window:</strong> <span id="person-history">—</span></div>
+                        <div class="detail-pill"><strong>Prediction horizon:</strong> <span id="person-horizon">—</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMBINED KALMAN BASELINE -->
+        <section class="panel grid-card">
+            <div class="panel-title" id="combined-panel-title">Kalman Forecast Context</div>
+            <div class="mini-panel-body" id="combined-panel">
+                <!-- combined trace + kalman baseline visualization -->
+            </div>
+        </section>
+
+        <!-- FUTURE MODEL -->
+        <section class="panel grid-card">
+            <div class="panel-title">Actual vs Predicted Direction</div>
+            <div class="mini-panel-body" id="future-prediction-panel">
+                <div id="future-prediction-message">Loading direction view...</div>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+
+<script type="module" src="../static/main.js"></script>
+
+</body>
+</html>

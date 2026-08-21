@@ -1,0 +1,44 @@
+{
+  "config": {
+    "obs_len": 8,
+    "pred_len": 12,
+    "hidden_size": 128,
+    "embedding_dim": 64,
+    "grid_size": 4,
+    "subsample_step": 20,
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "num_epochs": 100,
+    "leave_one_out": true,
+    "fold_sequence": null,
+    "run_id": "lstm_loo_e100_bs16_ss20",
+    "output_dir": "outputs\\loo_social_lstm",
+    "checkpoint_dir": "C:\\-=- Main files -=-\\UM\\Year 2\\Project 2.2\\Git\\project_2-2_25-26_dsai_group-12\\App\\checkpoints\\social_lstm"
+  },
+  "folds": [
+    {
+      "fold": 0,
+      "held_out_sequence": "MOT20-01",
+      "train_windows": 4425,
+      "val_windows": 48
+    },
+    {
+      "fold": 1,
+      "held_out_sequence": "MOT20-02",
+      "train_windows": 2072,
+      "val_windows": 2401
+    },
+    {
+      "fold": 2,
+      "held_out_sequence": "MOT20-03",
+      "train_windows": 2449,
+      "val_windows": 2024
+    }
+  ],
+  "selected_folds": [
+    "MOT20-01",
+    "MOT20-02",
+    "MOT20-03"
+  ],
+  "metric_selection": "lowest validation loss"
+}

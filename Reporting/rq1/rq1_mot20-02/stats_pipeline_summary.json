@@ -1,0 +1,77 @@
+{
+  "inputs": {
+    "n_evaluation_rows": 3749960,
+    "combined_units_output_path": "D:\\Programming\\Maastricht\\project-2-2\\outputs\\stats\\rq1_mot20-02\\combined_evaluation_units.csv",
+    "aggregated_output_path": "D:\\Programming\\Maastricht\\project-2-2\\outputs\\stats\\rq1_mot20-02\\aggregated_track.csv"
+  },
+  "checkpoints": {},
+  "metadata": {
+    "model_names": [
+      "lstm",
+      "stt"
+    ],
+    "model_variants": [
+      "unknown"
+    ],
+    "train_domains": [
+      "real"
+    ],
+    "test_domains": [
+      "real"
+    ],
+    "synthetic_size_fractions": [
+      "NaN"
+    ]
+  },
+  "horizons": {
+    "requested_target_horizons": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "target_mappings": [
+      {
+        "target_horizon_s": 0.5,
+        "horizon_idx": 3,
+        "actual_horizon_s": 0.6,
+        "horizon_error_seconds": 0.09999999999999998
+      },
+      {
+        "target_horizon_s": 1.0,
+        "horizon_idx": 5,
+        "actual_horizon_s": 1.0,
+        "horizon_error_seconds": 0.0
+      },
+      {
+        "target_horizon_s": 2.0,
+        "horizon_idx": 10,
+        "actual_horizon_s": 2.0,
+        "horizon_error_seconds": 0.0
+      }
+    ],
+    "max_horizon_s": 2.0,
+    "coverage_pass": true
+  },
+  "aggregation": {
+    "level": "track",
+    "n_rows": 5820,
+    "metrics_available": [
+      "mean_error_l2",
+      "mean_ade_until_horizon",
+      "mean_fde_at_horizon"
+    ]
+  },
+  "rq1": {
+    "status": "ran",
+    "reason": "",
+    "output_path": "D:\\Programming\\Maastricht\\project-2-2\\outputs\\stats\\rq1_mot20-02\\rq1\\stats_rq1_pairwise_results.csv"
+  },
+  "rq2": {
+    "status": "not_selected",
+    "reason": ""
+  },
+  "rq3": {
+    "status": "not_selected",
+    "reason": ""
+  }
+}
