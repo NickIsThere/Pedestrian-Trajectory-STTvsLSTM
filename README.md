@@ -1,5 +1,7 @@
 # Project_2-2_25-26_DSAI_Group-12
 
+Full scientific report visible at Report.pdf
+
 Multi-object trajectory prediction using a transformer-based Hybrid Trajectory Prediction model and a Social LSTM benchmark, with a Flask GUI for visual inspection and comparison.
 
 ## Quick Start
