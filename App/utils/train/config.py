@@ -103,10 +103,10 @@ model_config = build_model_config_from_env()
 
 def _configure_social_lstm_environment(train_config: TrainingDefaults) -> None:
     """Forward main-trainer settings into the benchmark Social LSTM config."""
-    from utils.train.constants import APP_DIR
+    from utils.train.constants import PROJECT_ROOT
 
     os.environ["SOCIAL_LSTM_OUTPUT_DIR"] = str(train_config.output_dir)
-    os.environ["SOCIAL_LSTM_CHECKPOINT_DIR"] = str(APP_DIR / "checkpoints" / "social_lstm")
+    os.environ["SOCIAL_LSTM_CHECKPOINT_DIR"] = str(PROJECT_ROOT / "checkpoints" / "social_lstm")
     os.environ["BATCH_SIZE"] = str(train_config.batch_size)
     os.environ["LEARNING_RATE"] = str(train_config.learning_rate)
     os.environ["NUM_EPOCHS"] = os.environ.get("NUM_EPOCHS", str(train_config.train_steps))

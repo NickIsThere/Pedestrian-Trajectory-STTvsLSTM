@@ -19,7 +19,7 @@ Outputs (under outputs/loo_social_lstm/<run_id>/):
   fold_metrics.csv   — per-epoch history for every fold
   summary.csv        — best val loss per fold
   config.json        — full config, compatible with discovery pipeline
-App/checkpoints/social_lstm/best_model.pt  — copy of best fold
+checkpoints/social_lstm/best_model.pt  — copy of best fold
 """
 
 from __future__ import annotations
@@ -68,7 +68,7 @@ _RUN_ID        = os.environ.get("RUN_ID")
 _OUTPUT_DIR    = Path(os.environ.get("SOCIAL_LSTM_OUTPUT_DIR", "outputs/loo_social_lstm"))
 _CKPT_DIR      = Path(os.environ.get(
     "SOCIAL_LSTM_CHECKPOINT_DIR",
-    str(Path(__file__).parent.parent.parent / "checkpoints" / "social_lstm"),
+    str(Path(__file__).resolve().parents[3] / "checkpoints" / "social_lstm"),
 ))
 
 CONFIG: dict = {
@@ -388,7 +388,7 @@ def main() -> None:
                                      dataset, ckpt_dir, fold_rows)
         fold_results.append((held_out, best_val, ckpt))
 
-    # Copy best fold → App/checkpoints/social_lstm/best_model.pt
+    # Copy best fold to the repository-level inference checkpoint directory.
     best_held, best_loss, best_ckpt = min(fold_results, key=lambda t: t[1])
     dest = CONFIG["checkpoint_dir"] / "best_model.pt"
     shutil.copy2(best_ckpt, dest)

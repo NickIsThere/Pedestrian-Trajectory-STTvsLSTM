@@ -519,7 +519,7 @@ if __name__ == "__main__":
     project_root = Path(__file__).resolve().parent.parent
     mot_source = project_root / "Dataprep/MOTsource"
 
-    ensure_downloaded("MOT20")
+    ensure_downloaded("MOT20", cache_dir=mot_source)
 
     # So we have the pd.df loaded in the project
     output_dir = project_root / "data/tables"

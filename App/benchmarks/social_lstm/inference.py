@@ -22,7 +22,7 @@ from pathlib import Path
 from App.data.reader import Track, Annotation, BBox
 
 SOCIAL_LSTM_CHECKPOINT = (
-    Path(__file__).parent.parent.parent / "checkpoints" / "social_lstm" / "best_model.pt"
+    Path(__file__).resolve().parents[3] / "checkpoints" / "social_lstm" / "best_model.pt"
 )
 # Default: 10 steps × 0.2 s/step = 2.0 s  (aligned to STT pred_len)
 _DEFAULT_FUTURE_STEPS = 10
